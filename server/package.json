@@ -2,5 +2,89 @@
   "name": "ayoken",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+	"author": "BeardKoda",
+	"license": "MIT",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js",
+		"eslint": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
+		"lint": "./node_modules/.bin/eslint ./src",
+		"pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
+		"postpretty": "yarn lint --fix"
+	},
+	"dependencies": {
+		"@sendgrid/mail": "^7.4.2",
+		"await-to-js": "^2.1.1",
+		"axios": "^0.21.1",
+		"bcrypt": "^5.0.0",
+		"bip39": "^3.0.3",
+		"body-parser": "^1.19.0",
+		"celebrate": "^9.0.1",
+		"cloudinary": "^1.22.0",
+		"cors": "^2.8.5",
+		"cryptr": "^6.0.2",
+		"datauri": "^3.0.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-http-context": "^1.2.4",
+		"express-ip": "^1.0.4",
+		"express-validator": "^6.8.0",
+		"https": "^1.0.0",
+		"js-base64": "^3.6.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.1",
+		"mongoose": "^5.9.22",
+		"mongoose-slug-generator": "^1.0.4",
+		"mongoose-unique-validator": "^2.0.3",
+		"morgan": "^1.10.0",
+		"multer": "^1.4.2",
+		"oauth": "^0.9.15",
+		"pino": "^6.11.1",
+		"redis": "^3.0.2",
+		"uniqid": "^5.3.0"
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.1.0",
+		"chai": "^4.2.0",
+		"eslint": "^7.11.0",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-mocha": "^6.3.0",
+		"express-list-endpoints": "^4.0.1",
+		"husky": "^4.3.0",
+		"mocha": "^7.0.1",
+		"mock-req-res": "^1.1.4",
+		"mock-require": "^3.0.3",
+		"mongo-express": "^0.54.0",
+		"nodemon": "^2.0.4",
+		"pino-pretty": "^3.5.0",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1"
+	},
+	"babel": {
+		"presets": [
+			"node8"
+		]
+	},
+	"eslintConfig": {
+		"plugins": [
+			"node"
+		],
+		"extends": [
+			"eslint:recommended",
+			"plugin:node/recommended"
+		],
+		"rules": {
+			"node/no-unsupported-features/es-syntax": 0,
+			"node/no-unsupported-features/es-builtins": 0
+		},
+		"env": {
+			"node": true,
+			"es6": true
+		},
+		"parserOptions": {
+			"sourceType": "module",
+			"ecmaVersion": 2018
+		}
+	}
 }
