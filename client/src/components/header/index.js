@@ -3,20 +3,32 @@ import './index.css';
 
 function Header() {
   return (
-    <nav>
-      <ul>
+    <nav className='header'>
+      <ul className='headerJustify'>
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/packs">Packs</Link>
-        </li>
-        <li>
-          <Link to="/market">The Market</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
+        
+        <div className='navGroups'>
+          <li>
+            <Link to="/packs">Packs</Link>
+          </li>
+          <li>
+            <Link to="/market">The Market</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </div>
+
+        <div className='navGroups'>
+          <li>
+            <Link to="/about">Log in</Link>
+          </li>
+          <li>
+            <Link to="/about">Sign up</Link>
+          </li>
+        </div>
       </ul>
     </nav>
   );
