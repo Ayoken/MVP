@@ -7,11 +7,12 @@ import {
 } from "react-router-dom";
 import Header from "./components/header";
 import Home from "./pages/home";
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className='container'>
         <Header/>
 
         {/* A <Switch> looks through its children <Route>s and
