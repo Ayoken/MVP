@@ -1,7 +1,7 @@
-import logo from './../../logo.svg';
+import logo from './logo.svg';
 import './index.css';
 
-function Home() {
+function Footer() {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,4 +22,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Footer;
