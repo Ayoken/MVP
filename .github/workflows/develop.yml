@@ -21,4 +21,4 @@
 #           USERNAME: ${{ secrets.USERNAME }}
 #           PORT: ${{ secrets.PORT }}
 #           KEY: ${{ secrets.SSHKEY }}
-#           script: cd /var/www/mvp/server && git pull && yarn && yarn build:client && pm2 restart all
+#           script: cd /var/www/mvp/server && sudo git pull && sudo yarn && sudo yarn build:client && sudo pm2 restart all
