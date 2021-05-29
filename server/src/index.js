@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 const expressip = require('express-ip');
 const db = require('./helpers/database');
 const path = require('path');
-const DIR = 'app/build';
+const DIR = '../client/build';
 const configs = require('./config');
 const port = configs.PORT;
 const ENNV = process.env.NODE_ENV || 'development';
@@ -59,9 +59,9 @@ function initRoutes(){
 //   })
   
   // Handles any requests that don't match the ones above
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, '..', DIR, '/index.html'));
-  // });
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', DIR, '/index.html'));
+  });
   app.all('**', (req, res) => {
     return resFailed(res, 404, 'Not Found', null);
   });

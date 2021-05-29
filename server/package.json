@@ -7,6 +7,7 @@
 	"scripts": {
 		"start": "node src/index.js",
 		"dev": "nodemon src/index.js",
+		"build:client": "cd ../client && yarn && yarn build",
 		"eslint": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
 		"lint": "./node_modules/.bin/eslint ./src",
 		"pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
