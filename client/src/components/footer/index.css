@@ -1,11 +1,13 @@
 .footer{ background: color #000;}
-.footer-text {color:#fff;
-              display:flex;
-              align-items: right;
-
-}
+.flex-container {display:flex;
+                 flex-direction: row;
+                 gap: 300px;
+                  }
 
 .footer-logo{color:#fff;
-            display:flex;}
+            display:flex;
+            gap: 100px;}
 
-.footer {display:flex;}
+.footer-logo{color:#fff;
+              margin-top: 70px;
+            }
