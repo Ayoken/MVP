@@ -9,6 +9,7 @@ function Home() {
     <div className="Home">
 
       {/* Packs */}
+      <h2>Fermentum sed vel.</h2>
       <div className="packRow">
         {
           packs.map((pack) =>
@@ -24,7 +25,7 @@ function Home() {
           )
         }
       </div>
-      <a>EXPLORE</a>
+      <a className="exploreButton">EXPLORE</a>
     </div>
   );
 }

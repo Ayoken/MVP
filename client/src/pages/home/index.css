@@ -37,3 +37,15 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+.exploreButton {
+  padding: 15px 30px 15px 30px;
+  justify-content: center;
+  border: solid #ffffff;
+  border-radius: 5px;
+  border-width: 1px;
+}
+h2 {
+  font-size: 33px;
+  color: #ffffff;
+  text-align: center;
+}
