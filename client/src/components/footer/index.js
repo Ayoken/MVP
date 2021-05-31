@@ -2,7 +2,7 @@ import './index.css';
 
 function Footer() {
   return (
-    <div className="App">
+    <div>
       <footer>
         
         <div className="flex-container">
