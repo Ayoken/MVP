@@ -5,6 +5,8 @@ function Footer() {
     <div className="App">
       <footer>
         
+        <div className="flex-container">
+
         <div className="footer-logo"> AYOKEN inc all rights reserved</div>
 
 
@@ -42,13 +44,7 @@ function Footer() {
                 <li> Newsletter</li>
                
               </ol>
-                </div>
-
-
-
-
-
-</div>
+                </div> </div> </div>
 
       </footer>
     </div>
