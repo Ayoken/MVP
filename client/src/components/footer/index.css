@@ -1,0 +1,11 @@
+.footer{ background: color #000;}
+.footer-text {color:#fff;
+              display:flex;
+              align-items: right;
+
+}
+
+.footer-logo{color:#fff;
+            display:flex;}
+
+.footer {display:flex;}
