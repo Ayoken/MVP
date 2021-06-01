@@ -44,12 +44,12 @@ function initMiddlewares() {
 }
 
 function initRoutes(){
-  app.use('/db-admin', mongo_express(mongo_express_config))
+  // app.use('/db-admin', mongo_express(mongo_express_config))
   app.use('/v1', authRouter);
-//   app.all('/download', (req, res)=>{
-//     const file = `${__dirname}/public/Afro-API.json`;
-//     return res.download(file);
-//   })
+  app.all("/download", (req, res) => {
+    const file = `${__dirname}/public/api-collection.json`;
+    return res.download(file);
+  });
   
   // Handles any requests that don't match the ones above
   app.get('/*', (req, res) => {
