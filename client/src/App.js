@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Header from "./components/header";
+import Footer from "./components/footer";
 import Home from "./pages/home";
 import './App.css';
 
@@ -28,6 +29,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        
+        <Footer/>
       </div>
     </Router>
   );

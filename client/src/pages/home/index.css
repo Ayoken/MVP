@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.packRow {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  justify-content:space-evenly;
 }
+.pack {
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+}
+.packImage {
+  width: 220px;
+  height: 220px;
+  border: solid #ffffff;
+}
+p {
+  color: #ffffff;
+}
+.packName {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.packVersion {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.packPrice {
+  font-size: 19px;
+  font-weight: 400;
+}
+.packQuantity {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.exploreButton {
+  padding: 15px 30px 15px 30px;
+  justify-content: center;
+  border: solid #ffffff;
+  border-radius: 5px;
+  border-width: 1px;
+}
+h2 {
+  font-size: 33px;
+  color: #ffffff;
+  text-align: center;
 }
