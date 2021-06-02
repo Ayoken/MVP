@@ -7,7 +7,27 @@ function Home() {
   const [avatar,setAvatar] = useState([{},{},{},{},{},{},{},{},{},{}]);
   return (
     <div className="Home">
-
+      {/* Hero */}
+      <div className="Hero_section"> 
+      <div className="textpart">
+      <h2> Lorem <br/> ipsum dolor</h2 >
+      <p id="subtext"> Lorem ipsum dolor sit amet, consectetur <br/>adipiscing elit. Consectetur arcu vitae at nec, <br/> commodo vestibulum. Lorem libero amet, at ut. </p>
+      <div className="hero_button"> 
+      <button className="AboutButton">About Us</button>
+      <button className="expButton">Explore</button>
+      </div> </div> 
+        <div className="packImage">
+                </div> 
+      </div>
+      {/* Section 1 */}
+      <div className="section_1"> 
+      <div className="packImage">
+        <button>Explore</button>
+      </div>
+      <div className="packImage">
+      <button>Purchase</button>
+      </div>
+      </div>
       {/* Section 2 */}
       <div className="section_2">
         <h2> FOLLOW THE LEADERS</h2>
@@ -20,7 +40,8 @@ function Home() {
         </div>
         
          </div>
-
+      {/* line */}
+      <hr></hr>
       {/* Packs */}
       <h2>Fermentum sed vel.</h2>
       <div className="packRow">
@@ -35,9 +56,11 @@ function Home() {
               <p className="packPrice">USD $9.00</p>
               <p className="packQuantity">85516 of 315000 left</p>
             </div>
-          )
+         
+         )
         }
       </div>
+      
       <a className="exploreButton">EXPLORE</a>
       
       {/* Section 4 */}
