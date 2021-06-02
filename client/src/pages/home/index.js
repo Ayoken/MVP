@@ -4,9 +4,22 @@ import './index.css';
 
 function Home() {
   const [packs, setPacks] = useState([{},{},{},{}]);
-
+  const [avatar,setAvatar] = useState([{},{},{},{},{},{},{},{},{},{}]);
   return (
     <div className="Home">
+
+      {/* Section 2 */}
+      <div className="section_2">
+        <h2> FOLLOW THE LEADERS</h2>
+        <p> Keep up with new releases from your favorite creator</p>
+        <div className="avatarRow"> {
+          avatar.map((avatars) =>
+          <div className="avatars"> 
+        <div className="packImage"></div>
+          </div> )}
+        </div>
+        
+         </div>
 
       {/* Packs */}
       <h2>Fermentum sed vel.</h2>
@@ -26,6 +39,19 @@ function Home() {
         }
       </div>
       <a className="exploreButton">EXPLORE</a>
+      
+      {/* Section 4 */}
+        <div className="section_4">
+           <div className="text_area">
+                <h2> LOREM IPSUM DOLOR </h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Eu ultrices fringilla amet consectetur sed. </p> <br/>
+                <a className="exploreButton">SIGN UP</a> 
+           </div>
+
+           <div className="packImage">  </div>
+
+        </div>
+
     </div>
   );
 }
