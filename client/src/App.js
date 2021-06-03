@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className='container'>
         <Header/>
-
+        <div className="body_wrap"> 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -28,7 +28,8 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>
+        </Switch> </div>
+        
         
         <Footer/>
       </div>
