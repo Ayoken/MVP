@@ -1,9 +1,9 @@
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-// KittyItems
+// AyokenItems
 // NFT items for Kitties!
 //
-pub contract KittyItems: NonFungibleToken {
+pub contract AyokenItems: NonFungibleToken {
 
     // Events
     //
@@ -19,7 +19,7 @@ pub contract KittyItems: NonFungibleToken {
     pub let MinterStoragePath: StoragePath
 
     // totalSupply
-    // The total number of KittyItems that have been minted
+    // The total number of AyokenItems that have been minted
     //
     pub var totalSupply: UInt64
 
@@ -40,14 +40,14 @@ pub contract KittyItems: NonFungibleToken {
         }
     }
 
-    // This is the interface that users can cast their KittyItems Collection as
-    // to allow others to deposit KittyItems into their Collection. It also allows for reading
-    // the details of KittyItems in the Collection.
-    pub resource interface KittyItemsCollectionPublic {
+    // This is the interface that users can cast their AyokenItems Collection as
+    // to allow others to deposit AyokenItems into their Collection. It also allows for reading
+    // the details of AyokenItems in the Collection.
+    pub resource interface AyokenItemsCollectionPublic {
         pub fun deposit(token: @NonFungibleToken.NFT)
         pub fun getIDs(): [UInt64]
         pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
-        pub fun borrowKittyItem(id: UInt64): &KittyItems.NFT? {
+        pub fun borrowKittyItem(id: UInt64): &AyokenItems.NFT? {
             // If the result isn't nil, the id of the returned reference
             // should be the same as the argument to the function
             post {
@@ -60,7 +60,7 @@ pub contract KittyItems: NonFungibleToken {
     // Collection
     // A collection of KittyItem NFTs owned by an account
     //
-    pub resource Collection: KittyItemsCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+    pub resource Collection: AyokenItemsCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
         // dictionary of NFT conforming tokens
         // NFT is a resource type with an `UInt64` ID field
         //
@@ -82,7 +82,7 @@ pub contract KittyItems: NonFungibleToken {
         // and adds the ID to the id array
         //
         pub fun deposit(token: @NonFungibleToken.NFT) {
-            let token <- token as! @KittyItems.NFT
+            let token <- token as! @AyokenItems.NFT
 
             let id: UInt64 = token.id
 
@@ -114,10 +114,10 @@ pub contract KittyItems: NonFungibleToken {
         // exposing all of its fields (including the typeID).
         // This is safe as there are no functions that can be called on the KittyItem.
         //
-        pub fun borrowKittyItem(id: UInt64): &KittyItems.NFT? {
+        pub fun borrowKittyItem(id: UInt64): &AyokenItems.NFT? {
             if self.ownedNFTs[id] != nil {
                 let ref = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT
-                return ref as! &KittyItems.NFT
+                return ref as! &AyokenItems.NFT
             } else {
                 return nil
             }
@@ -153,27 +153,27 @@ pub contract KittyItems: NonFungibleToken {
 		// and deposit it in the recipients collection using their collection reference
         //
 		pub fun mintNFT(recipient: &{NonFungibleToken.CollectionPublic}, typeID: UInt64) {
-            emit Minted(id: KittyItems.totalSupply, typeID: typeID)
+            emit Minted(id: AyokenItems.totalSupply, typeID: typeID)
 
 			// deposit it in the recipient's account using their reference
-			recipient.deposit(token: <-create KittyItems.NFT(initID: KittyItems.totalSupply, initTypeID: typeID))
+			recipient.deposit(token: <-create AyokenItems.NFT(initID: AyokenItems.totalSupply, initTypeID: typeID))
 
-            KittyItems.totalSupply = KittyItems.totalSupply + (1 as UInt64)
+            AyokenItems.totalSupply = AyokenItems.totalSupply + (1 as UInt64)
 		}
 	}
 
     // fetch
     // Get a reference to a KittyItem from an account's Collection, if available.
-    // If an account does not have a KittyItems.Collection, panic.
+    // If an account does not have a AyokenItems.Collection, panic.
     // If it has a collection but does not contain the itemID, return nil.
     // If it has a collection and that collection contains the itemID, return a reference to that.
     //
-    pub fun fetch(_ from: Address, itemID: UInt64): &KittyItems.NFT? {
+    pub fun fetch(_ from: Address, itemID: UInt64): &AyokenItems.NFT? {
         let collection = getAccount(from)
-            .getCapability(KittyItems.CollectionPublicPath)!
-            .borrow<&KittyItems.Collection{KittyItems.KittyItemsCollectionPublic}>()
+            .getCapability(AyokenItems.CollectionPublicPath)!
+            .borrow<&AyokenItems.Collection{AyokenItems.AyokenItemsCollectionPublic}>()
             ?? panic("Couldn't get collection")
-        // We trust KittyItems.Collection.borowKittyItem to get the correct itemID
+        // We trust AyokenItems.Collection.borowKittyItem to get the correct itemID
         // (it checks it before returning it).
         return collection.borrowKittyItem(id: itemID)
     }
@@ -182,9 +182,9 @@ pub contract KittyItems: NonFungibleToken {
     //
 	init() {
         // Set our named paths
-        self.CollectionStoragePath = /storage/kittyItemsCollection
-        self.CollectionPublicPath = /public/kittyItemsCollection
-        self.MinterStoragePath = /storage/kittyItemsMinter
+        self.CollectionStoragePath = /storage/AyokenItemsCollection
+        self.CollectionPublicPath = /public/AyokenItemsCollection
+        self.MinterStoragePath = /storage/AyokenItemsMinter
 
         // Initialize the total supply
         self.totalSupply = 0

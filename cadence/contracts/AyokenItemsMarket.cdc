@@ -1,11 +1,11 @@
-import Kibble from "./Kibble.cdc"
-import KittyItems from "./KittyItems.cdc"
+import Ayoken from "./Ayoken.cdc"
+import AyokenItems from "./AyokenItems.cdc"
 import FungibleToken from "./FungibleToken.cdc"
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
 /*
-    This is a simple KittyItems initial sale contract for the DApp to use
-    in order to list and sell KittyItems.
+    This is a simple AyokenItems initial sale contract for the DApp to use
+    in order to list and sell AyokenItems.
 
     Its structure is neither what it would be if it was the simplest possible
     market contract or if it was a complete general purpose market contract.
@@ -27,7 +27,7 @@ import NonFungibleToken from "./NonFungibleToken.cdc"
 
  */
 
-pub contract KittyItemsMarket {
+pub contract AyokenItemsMarket {
     // SaleOffer events.
     //
     // A sale offer has been created.
@@ -65,13 +65,13 @@ pub contract KittyItemsMarket {
     }
 
     // SaleOffer
-    // A KittyItems NFT being offered to sale for a set fee paid in Kibble.
+    // A AyokenItems NFT being offered to sale for a set fee paid in Ayoken.
     //
     pub resource SaleOffer: SaleOfferPublicView {
         // Whether the sale has completed with someone purchasing the item.
         pub var saleCompleted: Bool
 
-        // The KittyItems NFT ID for sale.
+        // The AyokenItems NFT ID for sale.
         pub let itemID: UInt64
 
         // The 'type' of NFT
@@ -81,17 +81,17 @@ pub contract KittyItemsMarket {
         pub let price: UFix64
 
         // The collection containing that ID.
-        access(self) let sellerItemProvider: Capability<&KittyItems.Collection{NonFungibleToken.Provider}>
+        access(self) let sellerItemProvider: Capability<&AyokenItems.Collection{NonFungibleToken.Provider}>
 
-        // The Kibble vault that will receive that payment if teh sale completes successfully.
-        access(self) let sellerPaymentReceiver: Capability<&Kibble.Vault{FungibleToken.Receiver}>
+        // The Ayoken vault that will receive that payment if teh sale completes successfully.
+        access(self) let sellerPaymentReceiver: Capability<&Ayoken.Vault{FungibleToken.Receiver}>
 
         // Called by a purchaser to accept the sale offer.
-        // If they send the correct payment in Kibble, and if the item is still available,
-        // the KittyItems NFT will be placed in their KittyItems.Collection .
+        // If they send the correct payment in Ayoken, and if the item is still available,
+        // the AyokenItems NFT will be placed in their AyokenItems.Collection .
         //
         pub fun accept(
-            buyerCollection: &KittyItems.Collection{NonFungibleToken.Receiver},
+            buyerCollection: &AyokenItems.Collection{NonFungibleToken.Receiver},
             buyerPayment: @FungibleToken.Vault
         ) {
             pre {
@@ -118,13 +118,13 @@ pub contract KittyItemsMarket {
 
         // initializer
         // Take the information required to create a sale offer, notably the capability
-        // to transfer the KittyItems NFT and the capability to receive Kibble in payment.
+        // to transfer the AyokenItems NFT and the capability to receive Ayoken in payment.
         //
         init(
-            sellerItemProvider: Capability<&KittyItems.Collection{NonFungibleToken.Provider, KittyItems.KittyItemsCollectionPublic}>,
+            sellerItemProvider: Capability<&AyokenItems.Collection{NonFungibleToken.Provider, AyokenItems.AyokenItemsCollectionPublic}>,
             itemID: UInt64,
             typeID: UInt64,
-            sellerPaymentReceiver: Capability<&Kibble.Vault{FungibleToken.Receiver}>,
+            sellerPaymentReceiver: Capability<&Ayoken.Vault{FungibleToken.Receiver}>,
             price: UFix64
         ) {
             pre {
@@ -155,10 +155,10 @@ pub contract KittyItemsMarket {
     // Make creating a SaleOffer publicly accessible.
     //
     pub fun createSaleOffer (
-        sellerItemProvider: Capability<&KittyItems.Collection{NonFungibleToken.Provider, KittyItems.KittyItemsCollectionPublic}>,
+        sellerItemProvider: Capability<&AyokenItems.Collection{NonFungibleToken.Provider, AyokenItems.AyokenItemsCollectionPublic}>,
         itemID: UInt64,
         typeID: UInt64,
-        sellerPaymentReceiver: Capability<&Kibble.Vault{FungibleToken.Receiver}>,
+        sellerPaymentReceiver: Capability<&Ayoken.Vault{FungibleToken.Receiver}>,
         price: UFix64
     ): @SaleOffer {
         return <-create SaleOffer(
@@ -175,7 +175,7 @@ pub contract KittyItemsMarket {
     // use by the collection's owner.
     //
     pub resource interface CollectionManager {
-        pub fun insert(offer: @KittyItemsMarket.SaleOffer)
+        pub fun insert(offer: @AyokenItemsMarket.SaleOffer)
         pub fun remove(itemID: UInt64): @SaleOffer 
     }
 
@@ -187,7 +187,7 @@ pub contract KittyItemsMarket {
     pub resource interface CollectionPurchaser {
         pub fun purchase(
             itemID: UInt64,
-            buyerCollection: &KittyItems.Collection{NonFungibleToken.Receiver},
+            buyerCollection: &AyokenItems.Collection{NonFungibleToken.Receiver},
             buyerPayment: @FungibleToken.Vault
         )
     }
@@ -200,7 +200,7 @@ pub contract KittyItemsMarket {
         pub fun borrowSaleItem(itemID: UInt64): &SaleOffer{SaleOfferPublicView}?
         pub fun purchase(
             itemID: UInt64,
-            buyerCollection: &KittyItems.Collection{NonFungibleToken.Receiver},
+            buyerCollection: &AyokenItems.Collection{NonFungibleToken.Receiver},
             buyerPayment: @FungibleToken.Vault
         )
    }
@@ -214,7 +214,7 @@ pub contract KittyItemsMarket {
         // insert
         // Insert a SaleOffer into the collection, replacing one with the same itemID if present.
         //
-         pub fun insert(offer: @KittyItemsMarket.SaleOffer) {
+         pub fun insert(offer: @AyokenItemsMarket.SaleOffer) {
             let itemID: UInt64 = offer.itemID
             let typeID: UInt64 = offer.typeID
             let price: UFix64 = offer.price
@@ -239,20 +239,20 @@ pub contract KittyItemsMarket {
         }
  
         // purchase
-        // If the caller passes a valid itemID and the item is still for sale, and passes a Kibble vault
-        // typed as a FungibleToken.Vault (Kibble.deposit() handles the type safety of this)
+        // If the caller passes a valid itemID and the item is still for sale, and passes a Ayoken vault
+        // typed as a FungibleToken.Vault (Ayoken.deposit() handles the type safety of this)
         // containing the correct payment amount, this will transfer the KittyItem to the caller's
-        // KittyItems collection.
+        // AyokenItems collection.
         // It will then remove and destroy the offer.
         // Note that is means that events will be emitted in this order:
         //   1. Collection.CollectionRemovedSaleOffer
-        //   2. KittyItems.Withdraw
-        //   3. KittyItems.Deposit
+        //   2. AyokenItems.Withdraw
+        //   3. AyokenItems.Deposit
         //   4. SaleOffer.SaleOfferFinished
         //
         pub fun purchase(
             itemID: UInt64,
-            buyerCollection: &KittyItems.Collection{NonFungibleToken.Receiver},
+            buyerCollection: &AyokenItems.Collection{NonFungibleToken.Receiver},
             buyerPayment: @FungibleToken.Vault
         ) {
             pre {
@@ -305,7 +305,7 @@ pub contract KittyItemsMarket {
 
     init () {
         //FIXME: REMOVE SUFFIX BEFORE RELEASE
-        self.CollectionStoragePath = /storage/kittyItemsMarketCollection002
-        self.CollectionPublicPath = /public/kittyItemsMarketCollection002
+        self.CollectionStoragePath = /storage/AyokenItemsMarketCollection002
+        self.CollectionPublicPath = /public/AyokenItemsMarketCollection002
     }
 }

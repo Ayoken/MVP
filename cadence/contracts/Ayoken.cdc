@@ -1,6 +1,6 @@
 import FungibleToken from "./FungibleToken.cdc"
 
-pub contract Kibble: FungibleToken {
+pub contract Ayoken: FungibleToken {
     // TokensInitialized
     //
     // The event that is emitted when the contract is created
@@ -38,7 +38,7 @@ pub contract Kibble: FungibleToken {
     pub let BalancePublicPath: PublicPath
     pub let AdminStoragePath: StoragePath
 
-    // Total supply of Kibbles in existence
+    // Total supply of Ayokens in existence
     pub var totalSupply: UFix64
 
     // Vault
@@ -89,7 +89,7 @@ pub contract Kibble: FungibleToken {
         // been consumed and therefore can be destroyed.
         //
         pub fun deposit(from: @FungibleToken.Vault) {
-            let vault <- from as! @Kibble.Vault
+            let vault <- from as! @Ayoken.Vault
             self.balance = self.balance + vault.balance
             emit TokensDeposited(amount: vault.balance, to: self.owner?.address)
             vault.balance = 0.0
@@ -97,7 +97,7 @@ pub contract Kibble: FungibleToken {
         }
 
         destroy() {
-            Kibble.totalSupply = Kibble.totalSupply - self.balance
+            Ayoken.totalSupply = Ayoken.totalSupply - self.balance
             if(self.balance > 0.0) {
                 emit TokensBurned(amount: self.balance)
             }
@@ -141,12 +141,12 @@ pub contract Kibble: FungibleToken {
         // Function that mints new tokens, adds them to the total supply,
         // and returns them to the calling context.
         //
-        pub fun mintTokens(amount: UFix64): @Kibble.Vault {
+        pub fun mintTokens(amount: UFix64): @Ayoken.Vault {
             pre {
                 amount > 0.0: "Amount minted must be greater than zero"
                 amount <= self.allowedAmount: "Amount minted must be less than the allowed amount"
             }
-            Kibble.totalSupply = Kibble.totalSupply + amount
+            Ayoken.totalSupply = Ayoken.totalSupply + amount
             self.allowedAmount = self.allowedAmount - amount
             emit TokensMinted(amount: amount)
             return <-create Vault(balance: amount)
@@ -160,10 +160,10 @@ pub contract Kibble: FungibleToken {
     init() {
         // Set our named paths.
         //FIXME: REMOVE SUFFIX BEFORE RELEASE
-        self.VaultStoragePath = /storage/kibbleVault002
-        self.ReceiverPublicPath = /public/kibbleReceiver002
-        self.BalancePublicPath = /public/kibbleBalance002
-        self.AdminStoragePath = /storage/kibbleAdmin002
+        self.VaultStoragePath = /storage/AyokenVault002
+        self.ReceiverPublicPath = /public/AyokenReceiver002
+        self.BalancePublicPath = /public/AyokenBalance002
+        self.AdminStoragePath = /storage/AyokenAdmin002
 
         // Initialize contract state.
         self.totalSupply = 0.0
