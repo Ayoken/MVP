@@ -8,6 +8,7 @@ import {
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./pages/home";
+import Packs from "./pages/packs";
 import './App.css';
 
 function App() {
@@ -25,8 +26,11 @@ function App() {
           <Route path="/users">
             <Users />
           </Route> */}
-          <Route path="/">
+          <Route path="/" exact="true">
             <Home />
+          </Route>
+          <Route path="/packs">
+            <Packs />
           </Route>
         </Switch> </div>
         

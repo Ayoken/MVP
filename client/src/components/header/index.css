@@ -16,6 +16,7 @@ header {
 }
 .headerJustify {
   justify-content: space-evenly;
+  margin: 0px;
 }
 .navGroups {
   display: flex;
