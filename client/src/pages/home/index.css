@@ -3,13 +3,15 @@
   flex-direction: row;
   /*overflow: scroll;*/
   justify-content:space-evenly;
+  gap:115px;
+  margin-top:60px;
 }
 .pack {
 
 }
 .packImage {
-  width: 220px;
-  height: 220px;
+  width: 280px;
+  height: 280px;
   border: solid #ffffff;
 }
 p {
@@ -19,6 +21,11 @@ p {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 0px;
+}
+.pack_button {
+  margin-top:60px;
+  text-align: center;
+
 }
 .packVersion {
   color: rgba(255, 255, 255, 0.6);
@@ -37,13 +44,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.exploreButton {
-  padding: 15px 30px 15px 30px;
-  justify-content: center;
-  border: solid #ffffff;
-  border-radius: 5px;
-  border-width: 1px;
-}
+
 h2 {
   font-size: 33px;
   color: #ffffff;
@@ -56,19 +57,26 @@ h2 {
     align-items: center;
     padding-bottom:20px;
     padding-top:20px;
-    background: radial-gradient(103.75% 153.62% at 24.86% 91.1%, rgba(60, 196, 197, 0.11) 58.4%, rgba(13, 13, 15, 0.81) 64.68%, rgba(13, 13, 15, 0.6) 91.95%);
-}
+    margin-top:80px;
+    }
 .section_4 h2{
     text-align: left;
+    
 }
 .section_4 .packImage {
-      width: 613px;
+      width: 750px;
       height: 564px;
       border: solid #ffffff;
+      margin-left:200px;
   }
  .section_2 {
       text-align: center;
+      margin-top:80px;
  }
+ .section_2 h2{
+   margin:0px;
+ }
+ 
 .section_2 .packImage {
       border-radius: 50%;
       width:82px;
@@ -78,34 +86,35 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
-    margin-right: 200px;
-    margin-left: 200px;
+    margin-top:50px;
     padding-bottom:60px;
     padding-top: 20px;  
   }
  hr {
     border: none;
-    border-top: 2px dashed #3CC4C5;
-    transform: rotate(0.14deg);
-    width: 1243px;
+    border-top: 3px dashed #3CC4C5;
+    margin-left: -40px;
+    margin-bottom:100px;
+    margin-top: 50px;
+    width: 1600px;
     height: 0px;
-    left: 101px;
-    top: 1727px;
+
   }
 
   .Hero_section{
     display:flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content:flex-start;
     align-items: center;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
     padding-top:20px;
       }
 
 .Hero_section .packImage {
 height: 541px;
-width:488px;
+width:700px;
 border: 1px solid #FFFFFF;
+margin-left: 260px;
 
 }
 
@@ -128,16 +137,16 @@ line-height: 29px;
     flex-direction: row;
     justify-content:space-evenly;
     align-items: center;
-    padding-right: 170px;
-    padding-left: 170px;
     padding-bottom: 60px;
     padding-top:20px;
       }
   .section_1 .packImage {
-    width: 567px;
+    width: 700px;
     height: 343px;
     display:flex;
     align-items: flex-end;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
 
   }
   .section_1 button {
@@ -155,6 +164,7 @@ line-height: 29px;
     color: #FFFFFF;
     margin-bottom:20px;
     margin-left: 20px;
+    border: 1px solid #3CC4C5;
   }
 
   .AboutButton {
@@ -172,7 +182,7 @@ line-height: 29px;
     margin-right: 10px;
   }
 
-  .hero_button .expButton {
+  .hero_button .exploreButton {
     width: 145px;
     height: 43px;
     border: solid #ffffff;
@@ -186,7 +196,21 @@ line-height: 29px;
     background-color: transparent;
     margin-left: 10px;
   }
-
   .hero_button{
-   
+    margin-top:40px;
+  }
+
+  .exploreButton {
+    width: 145px;
+    height: 43px;
+    border: solid #ffffff;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    border-width: 1px;
+    background-color: transparent;
+    
   }
