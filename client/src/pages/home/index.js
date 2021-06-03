@@ -4,7 +4,7 @@ import './index.css';
 
 function Home() {
   const [packs, setPacks] = useState([{},{},{},{}]);
-  const [avatar,setAvatar] = useState([{},{},{},{},{},{},{},{},{},{}]);
+  const [avatar,setAvatar] = useState([{},{},{},{},{},{},{},{},{},{},{},{}]);
   return (
     <div className="Home">
       {/* Hero */}
@@ -14,7 +14,7 @@ function Home() {
       <p id="subtext"> Lorem ipsum dolor sit amet, consectetur <br/>adipiscing elit. Consectetur arcu vitae at nec, <br/> commodo vestibulum. Lorem libero amet, at ut. </p>
       <div className="hero_button"> 
       <button className="AboutButton">About Us</button>
-      <button className="expButton">Explore</button>
+      <button className="exploreButton">Explore</button>
       </div> </div> 
         <div className="packImage">
                 </div> 
@@ -43,7 +43,8 @@ function Home() {
       {/* line */}
       <hr></hr>
       {/* Packs */}
-      <h2>Fermentum sed vel.</h2>
+    
+      <h2>FERMENTUM SED VEl</h2>
       <div className="packRow">
         {
           packs.map((pack) =>
@@ -60,15 +61,15 @@ function Home() {
          )
         }
       </div>
-      
-      <a className="exploreButton">EXPLORE</a>
-      
+      <div className="pack_button">
+      <button className="exploreButton">EXPLORE</button>
+      </div>
       {/* Section 4 */}
         <div className="section_4">
            <div className="text_area">
                 <h2> LOREM IPSUM DOLOR </h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Eu ultrices fringilla amet consectetur sed. </p> <br/>
-                <a className="exploreButton">SIGN UP</a> 
+                <button className="exploreButton">SIGN UP</button> 
            </div>
 
            <div className="packImage">  </div>
